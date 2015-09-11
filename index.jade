@@ -4,19 +4,26 @@ html(lang="cn")
 		meta(charset="utf8")
 		link(rel="stylesheet", href="css/flip.css")
 	body
-		div.page-flip
-			div.current.page
-				p 第一页，标题
-			// turnning front face
-			div.turning.front.page
-				p 第一页，标题
-			// turnning back face
-			div.turning.back.page
-				p 第二页，内容
-			div.page
-				p 第二页，内容
-			div.page
-				p 第三页，结尾
 	
-		script(src="js/flip.js")
+		#book-wrapper
+			.prev 上一页
+			.next 下一页
+			.book
+				.current.page
+					p 第一页，标题
+				// turnning front face
+				.turning.front
+					p 第一页，标题
+				// turnning back face
+				.turning.back
+					p 第二页，内容
+				.page
+					p 第二页，内容
+				.page
+					p 第三页，结尾
+					
+		script(src="lib/jquery.min.1.7.js")
+		script(src="lib/flip.js")			
+		script(src="js/control.js")
+		
 		

@@ -3,13 +3,27 @@ $page_color: #ffb380;
 $page_width: 800px;
 $page_height: 500px;
 $body_background_color: white;
-$view_height: 6000px;
+$view_height: 2000px;
 
 body {
-	margin: 50px 0;
+	margin: 100px 0;
 
 }
-.page-flip {
+
+#book-wrapper {
+	.prev {
+		float: left;
+		padding: 10px;
+		background: gray;
+	}
+	.next {
+		float: right;
+		padding: 10px;
+		background: gray;
+	}
+}
+
+.book {
 	margin: 0 auto;
 	position: relative;
 	-webkit-transform-style: preserve-3d;
@@ -21,33 +35,35 @@ body {
 	-webkit-perspective-origin: 50% 75%;
 					perspective-origin: 50% 75%;
 
-}
+	&>div{
+		position: absolute;
+		text-align: center;
+		top: 0;
+		left: 0;
+		height: $page_height;
+		width: $page_width;
+		-webkit-transform: translateZ(0px);
+		        transform: translateZ(0px);
 
-.page {
-	position: absolute;
-	text-align: center;
-	top: 0;
-	left: 0;
-	height: $page_height;
-	width: $page_width;
-	-webkit-transform: translateZ(0px);
-	        transform: translateZ(0px);
-
-	&>img{
+	}
+	img{
 		margin: 0 auto;
 		padding: 0;
 	}
-	&>p{
+	p{
 		margin: 0 auto;
 		padding: 10px;
 	}
-	&.current {
-		background-color: $page_color;
-		-webkit-transform: translateZ(1px);
-		        transform: translateZ(1px);
+	.page {
+		&.current {
+			background-color: $page_color;
+			-webkit-transform: translateZ(1px);
+			        transform: translateZ(1px);
+		}
 	}
-	&.turning {
-		$rotate: 45deg;
+	.turning {
+		// 最好从20deg开始，当deg较小时会出问题。比如5deg时
+		$rotate: 25deg;
 		$color: lighten($page_color, 10);
 		&.front {
 			-webkit-transform: rotateY(-#{$rotate}) translateZ(1px);
@@ -56,6 +72,10 @@ body {
 			background-image: -webkit-linear-gradient(right, $color 50%, transparent 0);
 		}
 		&.back {
+			-webkit-transform: rotateY(180deg-#{$rotate}) translateZ(1px);
+		        transform: rotateY(180deg-#{$rotate}) translateZ(1px);
+			background-image: -webkit-linear-gradient(right, $color 50%, transparent 0);
+
 		}
 	}
 }

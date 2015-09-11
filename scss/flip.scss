@@ -1,0 +1,61 @@
+// const declare:
+$page_color: #ffb380;
+$page_width: 800px;
+$page_height: 500px;
+$body_background_color: white;
+$view_height: 6000px;
+
+body {
+	margin: 50px 0;
+
+}
+.page-flip {
+	margin: 0 auto;
+	position: relative;
+	-webkit-transform-style: preserve-3d;
+	        transform-style: preserve-3d;
+	height: $page_height;
+	width: $page_width;
+	-webkit-perspective: $view_height;
+	        perspective: $view_height;
+	-webkit-perspective-origin: 50% 75%;
+					perspective-origin: 50% 75%;
+
+}
+
+.page {
+	position: absolute;
+	text-align: center;
+	top: 0;
+	left: 0;
+	height: $page_height;
+	width: $page_width;
+	-webkit-transform: translateZ(0px);
+	        transform: translateZ(0px);
+
+	&>img{
+		margin: 0 auto;
+		padding: 0;
+	}
+	&>p{
+		margin: 0 auto;
+		padding: 10px;
+	}
+	&.current {
+		background-color: $page_color;
+		-webkit-transform: translateZ(1px);
+		        transform: translateZ(1px);
+	}
+	&.turning {
+		$rotate: 45deg;
+		$color: lighten($page_color, 10);
+		&.front {
+			-webkit-transform: rotateY(-#{$rotate}) translateZ(1px);
+		        transform: rotateY(-#{$rotate}) translateZ(1px);
+		// 从右往左，如果transparent的stop为100%或不指定，那么在50%和100%之间会出现光滑过度
+			background-image: -webkit-linear-gradient(right, $color 50%, transparent 0);
+		}
+		&.back {
+		}
+	}
+}

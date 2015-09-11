@@ -1,9 +1,6 @@
 // const declare:
 $page_color: #ffb380;
-$page_width: 800px;
-$page_height: 500px;
 $body_background_color: white;
-$view_height: 2000px;
 
 body {
 	margin: 100px 0;
@@ -25,23 +22,13 @@ body {
 
 .book {
 	margin: 0 auto;
-	position: relative;
-	-webkit-transform-style: preserve-3d;
-	        transform-style: preserve-3d;
-	height: $page_height;
-	width: $page_width;
-	-webkit-perspective: $view_height;
-	        perspective: $view_height;
-	-webkit-perspective-origin: 50% 75%;
-					perspective-origin: 50% 75%;
-
 	&>div{
 		position: absolute;
 		text-align: center;
 		top: 0;
 		left: 0;
-		height: $page_height;
-		width: $page_width;
+		height: 100%;
+		width: 100%;
 		-webkit-transform: translateZ(0px);
 		        transform: translateZ(0px);
 
@@ -63,17 +50,16 @@ body {
 	}
 	.turning {
 		// 最好从20deg开始，当deg较小时会出问题。比如5deg时
-		$rotate: 25deg;
 		$color: lighten($page_color, 10);
 		&.front {
-			-webkit-transform: rotateY(-#{$rotate}) translateZ(1px);
-		        transform: rotateY(-#{$rotate}) translateZ(1px);
+			// -webkit-transform: rotateY(-#{$rotate}) translateZ(1px);
+		  //       transform: rotateY(-#{$rotate}) translateZ(1px);
 		// 从右往左，如果transparent的stop为100%或不指定，那么在50%和100%之间会出现光滑过度
 			background-image: -webkit-linear-gradient(right, $color 50%, transparent 0);
 		}
 		&.back {
-			-webkit-transform: rotateY(180deg-#{$rotate}) translateZ(1px);
-		        transform: rotateY(180deg-#{$rotate}) translateZ(1px);
+			// -webkit-transform: rotateY(155deg) translateZ(1px);
+		  //       transform: rotateY(155deg) translateZ(1px);
 			background-image: -webkit-linear-gradient(right, $color 50%, transparent 0);
 
 		}

@@ -4,4 +4,8 @@ $(function(){
     vh: 2500,
     margin: "33px auto"
   });
+
+  $(".next_btn").on("click", function() {
+    book.flip().nextPage();
+  })
 })

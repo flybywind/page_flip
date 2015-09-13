@@ -8,13 +8,16 @@ body {
 }
 
 #book-wrapper {
-	.prev {
-		float: left;
+	* {
+		box-sizing: border-box;
+	}
+	.prev_btn {
+		cursor: pointer;
 		padding: 10px;
 		background: gray;
 	}
-	.next {
-		float: right;
+	.next_btn {
+		cursor: pointer;
 		padding: 10px;
 		background: gray;
 	}
@@ -43,10 +46,10 @@ body {
 	}
 	.page {
 		&.current {
-			background-color: $page_color;
 			-webkit-transform: translateZ(1px);
 			        transform: translateZ(1px);
 		}
+		background-color: $page_color;
 	}
 	.turning {
 		// 最好从20deg开始，当deg较小时会出问题。比如5deg时
@@ -60,7 +63,7 @@ body {
 		&.back {
 			// -webkit-transform: rotateY(155deg) translateZ(1px);
 		  //       transform: rotateY(155deg) translateZ(1px);
-			background-image: -webkit-linear-gradient(right, $color 50%, transparent 0);
+			background-image: -webkit-linear-gradient(left, $color 50%, transparent 0);
 
 		}
 	}

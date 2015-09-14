@@ -34,7 +34,7 @@ body {
 		width: 100%;
 		-webkit-transform: translateZ(0px);
 		        transform: translateZ(0px);
-
+	  z-index: 0;
 	}
 	img{
 		margin: 0 auto;
@@ -46,24 +46,22 @@ body {
 	}
 	.page {
 		&.current {
-			-webkit-transform: translateZ(1px);
-			        transform: translateZ(1px);
+			z-index: 1;
 		}
 		background-color: $page_color;
 	}
 	.turning {
-		// 最好从20deg开始，当deg较小时会出问题。比如5deg时
-		$color: lighten($page_color, 10);
+		// 最好从20deg开始，当deg较小时会出问题。比如5deg时, 这是因为2个页面不在同一个z坐标上
 		&.front {
 			// -webkit-transform: rotateY(-#{$rotate}) translateZ(1px);
 		  //       transform: rotateY(-#{$rotate}) translateZ(1px);
 		// 从右往左，如果transparent的stop为100%或不指定，那么在50%和100%之间会出现光滑过度
-			background-image: -webkit-linear-gradient(right, $color 50%, transparent 0);
+			background-image: -webkit-linear-gradient(right, $page_color 50%, transparent 0);
 		}
 		&.back {
 			// -webkit-transform: rotateY(155deg) translateZ(1px);
 		  //       transform: rotateY(155deg) translateZ(1px);
-			background-image: -webkit-linear-gradient(left, $color 50%, transparent 0);
+			background-image: -webkit-linear-gradient(left, $page_color 50%, transparent 0);
 
 		}
 	}

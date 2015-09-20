@@ -1,10 +1,9 @@
 // const declare:
-$page_color: #ffb380;
+$page_color: gray;
 $body_background_color: white;
 
 body {
 	margin: 100px 0;
-
 }
 
 #book-wrapper {
@@ -25,45 +24,43 @@ body {
 
 .book {
 	margin: 0 auto;
-	&>div{
+	.page{
 		position: absolute;
-		text-align: center;
 		top: 0;
 		left: 0;
-		height: 100%;
+		text-align: center;
 		width: 100%;
-		-webkit-transform: translateZ(0px);
-		        transform: translateZ(0px);
 	  z-index: 0;
-	}
-	img{
-		margin: 0 auto;
-		padding: 0;
-		width: 100%;
-	}
-	p{
-		margin: 0 auto;
-		padding: 10px;
-	}
-	.page {
-		&.current {
+		&.flipnext,
+		&.flipprev {
 			z-index: 1;
 		}
-		background-color: $page_color;
-	}
-	.turning {
-		// 最好从20deg开始，当deg较小时会出问题。比如5deg时, 这是因为2个页面不在同一个z坐标上
-		&.front {
-			// -webkit-transform: rotateY(-#{$rotate}) translateZ(1px);
-		  //       transform: rotateY(-#{$rotate}) translateZ(1px);
-		// 从右往左，如果transparent的stop为100%或不指定，那么在50%和100%之间会出现光滑过度
-			background-image: -webkit-linear-gradient(right, $page_color 50%, transparent 0);
+		&.current {
+			z-index: 10;
 		}
-		&.back {
-			// -webkit-transform: rotateY(155deg) translateZ(1px);
-		  //       transform: rotateY(155deg) translateZ(1px);
-			background-image: -webkit-linear-gradient(left, $page_color 50%, transparent 0);
-
+		.left {
+			width: 100%;
+			left: 0;
+			z-index: 20;
+		}
+		.right {
+			width: 50%;
+			right: 0;
+			z-index: 10;
+		}
+		.left,
+		.right {
+			position: absolute;
+			top: 0;
+			overflow: hidden;
+		}
+		.right>.content {
+			transform: translate(-50%, 0);
+		}
+		.content{
+			margin: 0 auto;
+			padding: 10px;
+			background-color: $page_color;
 		}
 	}
 }

@@ -31,22 +31,23 @@ body {
 		text-align: center;
 		width: 100%;
 	  z-index: 0;
-		&.flipnext,
-		&.flipprev {
-			z-index: 1;
-		}
 		&.current {
-			z-index: 10;
+			z-index: 2;
+		}
+		&.next {
+			z-index: 1;
 		}
 		.left {
 			width: 100%;
-			left: 0;
-			z-index: 20;
+			z-index: 2;
 		}
 		.right {
 			width: 50%;
 			right: 0;
-			z-index: 10;
+			z-index: 1;
+			&.active {
+				z-index: 2;
+			}
 		}
 		.left,
 		.right {

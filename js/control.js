@@ -1,7 +1,9 @@
 $(function(){
   var book = $("#book-wrapper");
   book.flip().init({
-  	effect_time: 50,
+    height: 600,
+    width: 1000,
+  	effect_time: 100,
     vh: 2500,
     margin: "33px auto"
   });

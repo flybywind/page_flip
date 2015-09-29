@@ -8,4 +8,7 @@ $(function(){
   $(".next_btn").on("click", function() {
     book.flip().nextPage();
   })
+  $(".prev_btn").on("click", function() {
+    book.flip().prevPage();
+  })
 })

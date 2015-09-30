@@ -6,7 +6,7 @@ $(function(){
   	effect_time: 4000,  // unit ms
     vh: 5500,
     margin: "33px auto",
-	effect: book.flipEffect.easeInOut(2000),
+	//effect: book.flipEffect.easeInOut(2000),
 	//effect: book.flipEffect.linear(),
   });
 

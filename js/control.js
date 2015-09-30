@@ -3,9 +3,10 @@ $(function(){
   book.flip().init({
     height: 600,
     width: 1000,
-  	effect_time: 100,
-    vh: 2500,
-    margin: "33px auto"
+  	effect_time: 2000,  // 2s
+    vh: 5500,
+    margin: "33px auto",
+	effect: book.flipEffect.linear(),
   });
 
   $(".next_btn").on("click", function() {
